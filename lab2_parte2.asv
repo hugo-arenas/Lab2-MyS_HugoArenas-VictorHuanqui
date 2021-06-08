@@ -1,7 +1,7 @@
 %% - Parte 2
 % Se definen las funciones de cada sistema:
-%s = tf('s');
-syms s
+s = tf('s');
+%syms s
 U = 1/s;
 H1 = 4*s/(10*s^2 + 4);
 H2 = 3/(6*s + 16);
@@ -35,9 +35,12 @@ delta = 1 - L1;
 
 %Calcular función de transferencia H = (Sumatoria_(Ti*delta_i))/delta:
 H = (T1*delta_1 + T2*delta_2 + T3*delta_3 + T4*delta_4)/delta;
-
 % Reemplazando, quedaría H = (H1(1 - H3)+H2(1 - H3) + H3H4H6 + H3H5H6)/(1 - H3)
 % -> H = H1 + H2 + H3H6(H4 + H5)/(1 - H3);
+% Por tanto, La función respuesta al escalón es: Y = H*U.
+% Para ver su gráfico, se hace lo siguiente:
+step(H);
 
-% Por tanto, La función respuesta al escalón es:
-Y = H*U;
+%La función de transferencia H obtenida es:
+H
+H0 = minreal(H1 + H2 + H3*H6*(H4 + H5)/(1 - H3));
