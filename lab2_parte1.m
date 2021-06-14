@@ -44,7 +44,13 @@ grid on;
 % cuadro comparativo entre los valores de ganancia estática, tiempo de
 % estabilización, cero y polos para el lazo cerrado y lazo abierto para H1 
 damp(H1s)
+num1 = [1 0];
+den1 = [6 2];
+[zeros1, polos1, ganancia1] = tf2zp(num1,den1)
 damp(H1s_cerrado)
+num2 = [1 0];
+den2 = [7 2];
+[zeros2, polos2, ganancia2] = tf2zp(num2,den2)
 %% 1.2) y''(t) + 6y'(t) + 3y(t) = 5u''(t) + 7u'(t) + u(t)
 % aplicando la transformada de laplace en 1.2
 % [s^2*Y(s) − s*y(0) - y'(0)] + 6[sY(s) − y(0)] + 3Y(s) = 5[s^2*U(s) −
@@ -90,4 +96,10 @@ grid on;
 % cuadro comparativo entre los valores de ganancia estática, tiempo de
 % estabilización, cero y polos para el lazo cerrado y lazo abierto para H2
 damp(Hs2)
+num3 = [5 7 1];
+den3 = [1 6 3];
+[zeros3, polos3, ganancia3] = tf2zp(num3, den3)
 damp(Hs2_cerrado)
+num4 = [5 7 1];
+den4 = [6 13 4];
+[zeros4, polos4, ganancia4] = tf2zp(num4, den4)
